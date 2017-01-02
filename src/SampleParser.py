@@ -1,4 +1,5 @@
 import os
+import sys
 from Bio import SeqIO
 
 def parseTrainingSamples():
@@ -16,6 +17,10 @@ def _parseSample(path):
 
 def _readFile(filename):
     try:
-       return list(SeqIO.parse(filename, "fasta"))
+        sequences = list()
+        records = list(SeqIO.parse(filename, "fasta"))
+        for record in records:
+            sequences.append(record.seq.split('#')[0])
+        return sequences
     except :
-       sys.exit("Error reading file " + filename)
+        sys.exit("Error reading file " + filename)
