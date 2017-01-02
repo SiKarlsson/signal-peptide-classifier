@@ -20,7 +20,7 @@ def _readFile(filename):
         sequences = list()
         records = list(SeqIO.parse(filename, "fasta"))
         for record in records:
-            sequences.append(record.seq.split('#')[0])
+            sequences.append(str(record.seq.split('#')[0]))
         return sequences
     except :
         sys.exit("Error reading file " + filename)
