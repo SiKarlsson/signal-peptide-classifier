@@ -8,10 +8,10 @@ def train(positiveSamples, negativeSamples, method):
     targets = ([1] * len(positiveSamples)) + ([0] * len(negativeSamples))
     count = CountVectorizer(analyzer='char', lowercase=False).fit(samples)
     tfidf = TfidfTransformer().fit_transform(count.transform(samples))
-    if method == "nb":
+    if method == "NB":
         return MultinomialNB().fit(tfidf, targets), count
-    elif method =="svc":
-        return SVC(kernel="rbf").fit(tfidf, targets), count
+    elif method =="SVM":
+        return SVC(kernel="rbf", class_weight={0: 1, 1: 0.85}).fit(tfidf, targets), count
 
 def predict(classifier, sequences, count):
     inputWordCount = count.transform(sequences)
