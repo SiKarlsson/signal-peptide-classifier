@@ -12,3 +12,8 @@ def train(positiveSamples, negativeSamples, method):
         return MultinomialNB().fit(tfidf, targets), count
     elif method =="svc":
         return SVC(kernel="rbf").fit(tfidf, targets), count
+
+def predict(classifier, sequences, count):
+    inputWordCount = count.transform(sequences)
+    tfidf = TfidfTransformer().fit_transform(inputWordCount)
+    return classifier.predict(tfidf)
