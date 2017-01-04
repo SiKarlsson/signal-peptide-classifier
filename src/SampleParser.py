@@ -1,10 +1,11 @@
 import os
 import sys
 from Bio import SeqIO
+import Constants
 
 def parseTrainingSamples():
-    pos_path = os.getcwd() + "/../training_data/" + "positive_examples"
-    neg_path = os.getcwd() + "/../training_data/" + "negative_examples"
+    pos_path = Constants.positiveSamplesPath
+    neg_path = Constants.negativeSamplesPath
     return _parseSample(pos_path), _parseSample(neg_path)
 
 def _parseSample(path):
