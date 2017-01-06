@@ -7,6 +7,8 @@ import sys
 
 def main():
     positiveSamples, negativeSamples = SampleParser.parseTrainingSamples()
+    print "Number of positive training samples: " + str(len(positiveSamples))
+    print "Number of negative training samples: " + str(len(negativeSamples))
     organism = sys.argv[1]
     methods = ('SVM', 'NB')
     pos = []
@@ -16,6 +18,11 @@ def main():
         for i in range(0, len(methods)):
             classifier, count = Classifier.train(positiveSamples, negativeSamples, methods[i])
             seqs = SampleParser.readFile(Constants.getTestData(organism, sign))
+            if sign == 'pos':
+                print "Number of positive testing samples: " + " " + str(len(seqs))
+            else:
+                print "Number of negative testing samples: " + " " + str(len(seqs))
+
             predicted = Classifier.predict(classifier, seqs, count)
             incorrect = 0
             correct = 0
