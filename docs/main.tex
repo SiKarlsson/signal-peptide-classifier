@@ -15,6 +15,17 @@
 \begin{document}
 \maketitle
 
+\begin{abstract}
+Many proteins needs help by the signal peptide with relocation to the actual location in the cell where the protein is to perform its task.
+The signal peptide is not present in all proteins, which raises he question of how one can determine if the signal peptide is part of a given protein or not.
+This project examines two different machine learning methods, the naïve Bayes classifier and the support vector machine classifier, from the scikit-learn Python library, to distinguish signal peptides from non-signal peptides.
+The proteomes are represented as a tf-idf matrix and training and testing is done with the Python library scikit-learn against two test sets with two different organisms.
+Naïve Bayes performs best with 64\% and 63\% accuracy on the two different test sets.
+The accuracy of SVM was 62\% and 60\% on the corresponding test sets.
+\end{abstract}
+
+\newpage
+
 \section{Introduction}
 A protein is a molecule with extensive responsibility, constructed by chains of amino acids.
 The responsibilities of different proteins includes protecting the body from virus and bacteria, carry out chemical reactions in cells and more\cite{website:ghr}.
