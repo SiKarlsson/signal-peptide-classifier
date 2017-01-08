@@ -5,11 +5,22 @@ from Bio import SeqIO
 import Constants
 
 def parseTrainingSamples():
+    """Parses the training samples.
+    """
     pos_path = Constants.positiveSamplesPath
     neg_path = Constants.negativeSamplesPath
     return _parseSample(pos_path), _parseSample(neg_path)
 
 def readFile(filename):
+    """Returns all sequences from the file with the given filename.
+
+    Args:
+        filename (str): The filename of the file with the sequences.
+
+    Returns:
+        The sequences in the file with the given filename.
+
+    """
     try:
         c = 0
         sequences = list()
@@ -23,6 +34,29 @@ def readFile(filename):
     except :
         sys.exit("Error reading file " + filename)
 
+def produceRandomSequence(n):
+    """Produces a random sequence of length n.
+
+    Args:
+        n (int): The length of the sequence to be produced.
+
+    Returns:
+        A random sequence of length n.
+
+    """
+    sequences = []
+    for i in range(0, n):
+        l = 100
+        a = ("R", "H", "K", "D", "E", "S", "T", "N", "Q", "C", "U", "G", "P", "A", "V", "I", "L", "M", "F", "Y", "W")
+        lineLength = 80
+        s = ""
+        for x in range(1, int(l)+1):
+            s = s + random.choice(a)
+        sequences.append(s)
+    return sequences
+
+"""Private functions not intended for public use
+"""
 
 def _parseSample(path):
     samples = list()
@@ -44,15 +78,3 @@ def _countUniqueChars(s):
         if c not in unique:
             unique.append(c)
     return len(unique)
-
-def produceRandomSequence(n):
-    sequences = []
-    for i in range(0, n):
-        l = 100
-        a = ("R", "H", "K", "D", "E", "S", "T", "N", "Q", "C", "U", "G", "P", "A", "V", "I", "L", "M", "F", "Y", "W")
-        lineLength = 80
-        s = ""
-        for x in range(1, int(l)+1):
-            s = s + random.choice(a)
-        sequences.append(s)
-    return sequences

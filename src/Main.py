@@ -6,6 +6,12 @@ from decimal import Decimal
 import sys
 
 def main():
+    """Main handler for running the experiments.
+
+    Command line args:
+        1: The organism to run the experiments on.
+
+    """
     positiveSamples, negativeSamples = SampleParser.parseTrainingSamples()
     print "Number of positive training samples: " + str(len(positiveSamples))
     print "Number of negative training samples: " + str(len(negativeSamples))

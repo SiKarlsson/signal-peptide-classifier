@@ -2,6 +2,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def plot(pos, neg, tot, methods, organism):
+    """Plots the result of an experiment.
+
+    Args:
+        pos (Decimal[]): The results for the positive test samples.
+        neg (Decimal[]): The results for the negative test samples.
+        tot (Decimal[]): The results for both positive and negative test samples.
+        method (str): The ml method used for the experiment.
+        organism (str): The organism of the experiment.
+
+    Returns:
+        None.
+
+    """
     w=0.2
     xIndex = np.arange(len(methods))
     fig, ax = plt.subplots()
