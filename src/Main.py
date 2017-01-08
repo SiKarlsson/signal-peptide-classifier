@@ -15,6 +15,8 @@ def main():
     positiveSamples, negativeSamples = SampleParser.parseTrainingSamples()
     print "Number of positive training samples: " + str(len(positiveSamples))
     print "Number of negative training samples: " + str(len(negativeSamples))
+    if len(sys.argv) != 2:
+        sys.exit("Wrong number of arguments")
     organism = sys.argv[1]
     methods = ('SVM', 'NB')
     pos = []
