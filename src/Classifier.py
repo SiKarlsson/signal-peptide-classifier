@@ -2,6 +2,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
+import sys
 
 def train(positiveSamples, negativeSamples, method):
     """Fits a model to the training samples.
@@ -23,6 +24,8 @@ def train(positiveSamples, negativeSamples, method):
         return MultinomialNB().fit(tfidf, targets), count
     elif method =="SVM":
         return SVC(kernel="rbf", class_weight={0: 1, 1: 0.85}).fit(tfidf, targets), count
+    else:
+        sys.exit("No model with code: " + method)
 
 def predict(classifier, sequences, count):
     """Predicts if the given sequences contains signal peptides or not.

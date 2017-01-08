@@ -59,12 +59,15 @@ def produceRandomSequence(n):
 """
 
 def _parseSample(path):
-    samples = list()
-    for dir in os.listdir(path):
-        sample_dir = os.path.join(path, dir)
-        for file in os.listdir(sample_dir):
-            samples = samples + readFile(os.path.join(sample_dir, file))
-    return samples
+    try:
+        samples = list()
+        for dir in os.listdir(path):
+            sample_dir = os.path.join(path, dir)
+            for file in os.listdir(sample_dir):
+                samples = samples + readFile(os.path.join(sample_dir, file))
+        return samples
+    except:
+        sys.exit("Error reading file " + path)
 
 def _checkSequence(sequence):
     if len(sequence) < 20 or _countUniqueChars(sequence) > 22 or sequence == 'Sequenceunavailable':
